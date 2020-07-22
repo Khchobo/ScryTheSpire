@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\ico">
+      <UniqueIdentifier>{b99be75a-bf94-4216-a353-8f1caa3cc158}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\rc">
+      <UniqueIdentifier>{516e9284-dcc7-4f3b-8e36-b3bdd7f95bf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\cards">
+      <UniqueIdentifier>{66ac09ca-9c21-492a-9f31-dc70713f0a7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ScryTheSpire.h">
@@ -48,17 +57,17 @@
   <ItemGroup>
     <None Include="ScryTheSpire.htm" />
     <None Include="res\ScryTheSpire.rc2">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\rc</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ScryTheSpire.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <Image Include="res\ScryTheSpire.ico">
+      <Filter>Resource Files\ico</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\ScryTheSpire.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <ResourceCompile Include="ScryTheSpire.rc">
+      <Filter>Resource Files\rc</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
