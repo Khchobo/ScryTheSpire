@@ -51,11 +51,12 @@ BEGIN_DHTML_EVENT_MAP(CScryTheSpireDlg)
 END_DHTML_EVENT_MAP()
 
 BEGIN_DISPATCH_MAP(CScryTheSpireDlg, CDHtmlDialog)
-	DISP_FUNCTION(CScryTheSpireDlg, "BringData", TestBringDataFromCxxToHtml, VT_I2, VTS_NONE)
+	DISP_FUNCTION(CScryTheSpireDlg, "GetState", GetCurrentState, VT_I2, VTS_NONE)
 END_DISPATCH_MAP()
 
 CScryTheSpireDlg::CScryTheSpireDlg(CWnd* pParent /*=nullptr*/)
-	: CDHtmlDialog(IDD_SCRYTHESPIRE_DIALOG, IDR_HTML_SCRYTHESPIRE_DIALOG, pParent)
+	: CDHtmlDialog(IDD_SCRYTHESPIRE_DIALOG, IDR_HTML_SCRYTHESPIRE_DIALOG, pParent),
+	  m_appState(AS_WAITING_FOR_WINDOW)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -167,8 +168,8 @@ HRESULT CScryTheSpireDlg::OnButtonCancel(IHTMLElement* /*pElement*/)
 	return S_OK;
 }
 
-// Test implementation of IDispatch to allow JS to call C++ functions
-short CScryTheSpireDlg::TestBringDataFromCxxToHtml()
+// Get current app state
+AppState CScryTheSpireDlg::GetCurrentState()
 {
-	return 0;
+	return m_appState;
 }

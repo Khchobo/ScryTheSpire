@@ -1,16 +1,36 @@
 <HTML>
 <HEAD>
     <SCRIPT type="text/javascript">
-        function init()
+        var AppStateEnum = 
+        [
+            "WAITING_FOR_WINDOW",
+	        "WAITING_FOR_CARDS",
+	        "CARDS_FOUND",
+	        "ERROR"
+        ];
+
+        var interval;
+
+        function onLoadHTMLBody()
         {
-            var testRes = window.external.BringData();
-            var pTestTarget = document.getElementById("test_target")
-            
-            pTestTarget.innerHTML = testRes;
+            interval = setInterval(pollExternals, 2500);
+        }
+
+        function pollExternals()
+        {
+            getAppState();
+        }
+
+        function getAppState()
+        {
+            var stateEnumVal = window.external.GetState();
+            var pAppStateText = document.getElementById("app_state");
+
+            pAppStateText.innerHTML = AppStateEnum[stateEnumVal];
         }
     </SCRIPT>
 </HEAD>
-<BODY ID=CScryTheSpireDlg BGCOLOR=LIGHTGREY style="font-family:MS Shell Dlg;font-size:8" onload="init()">
-    <p id="test_target"></p>
+<BODY ID=CScryTheSpireDlg BGCOLOR=LIGHTGREY style="font-family:MS Shell Dlg;font-size:8" onload="onLoadHTMLBody()">
+    <p id="app_state"></p>
 </BODY>
 </HTML>

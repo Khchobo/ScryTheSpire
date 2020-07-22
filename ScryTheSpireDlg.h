@@ -2,6 +2,14 @@
 
 #pragma once
 
+enum AppState
+{
+	AS_WAITING_FOR_WINDOW,
+	AS_WAITING_FOR_CARDS,
+	AS_CARDS_FOUND,
+	AS_ERROR
+};
+
 // CScryTheSpireDlg dialog
 class CScryTheSpireDlg : public CDHtmlDialog
 {
@@ -23,7 +31,8 @@ public:
 	// Prevent ActiveX from complaining
 	BOOL IsExternalDispatchSafe() { return TRUE; }
 
-// Implementation
+	AppState GetCurrentState();
+
 protected:
 	HICON m_hIcon;
 
@@ -33,7 +42,8 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 
-	short TestBringDataFromCxxToHtml();
+	// Store state of App
+	AppState m_appState;
 
 	DECLARE_DISPATCH_MAP()
 	DECLARE_MESSAGE_MAP()
