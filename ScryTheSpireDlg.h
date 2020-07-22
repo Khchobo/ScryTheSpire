@@ -20,6 +20,9 @@ public:
 	HRESULT OnButtonOK(IHTMLElement *pElement);
 	HRESULT OnButtonCancel(IHTMLElement *pElement);
 
+	// Prevent ActiveX from complaining
+	BOOL IsExternalDispatchSafe() { return TRUE; }
+
 // Implementation
 protected:
 	HICON m_hIcon;
@@ -29,6 +32,10 @@ protected:
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
+
+	short TestBringDataFromCxxToHtml();
+
+	DECLARE_DISPATCH_MAP()
 	DECLARE_MESSAGE_MAP()
 	DECLARE_DHTML_EVENT_MAP()
 };

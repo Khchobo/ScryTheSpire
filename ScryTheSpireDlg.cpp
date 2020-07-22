@@ -50,6 +50,9 @@ BEGIN_DHTML_EVENT_MAP(CScryTheSpireDlg)
 	DHTML_EVENT_ONCLICK(_T("ButtonCancel"), OnButtonCancel)
 END_DHTML_EVENT_MAP()
 
+BEGIN_DISPATCH_MAP(CScryTheSpireDlg, CDHtmlDialog)
+	DISP_FUNCTION(CScryTheSpireDlg, "BringData", TestBringDataFromCxxToHtml, VT_I2, VTS_NONE)
+END_DISPATCH_MAP()
 
 CScryTheSpireDlg::CScryTheSpireDlg(CWnd* pParent /*=nullptr*/)
 	: CDHtmlDialog(IDD_SCRYTHESPIRE_DIALOG, IDR_HTML_SCRYTHESPIRE_DIALOG, pParent)
@@ -97,6 +100,12 @@ BOOL CScryTheSpireDlg::OnInitDialog()
 	//  when the application's main window is not a dialog
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
+
+	// Setup external dispatch
+
+	EnableAutomation();
+	LPDISPATCH pDisp = GetIDispatch(FALSE);
+	SetExternalDispatch(pDisp);
 
 	// TODO: Add extra initialization here
 
@@ -156,4 +165,10 @@ HRESULT CScryTheSpireDlg::OnButtonCancel(IHTMLElement* /*pElement*/)
 {
 	CDHtmlDialog::OnCancel();
 	return S_OK;
+}
+
+// Test implementation of IDispatch to allow JS to call C++ functions
+short CScryTheSpireDlg::TestBringDataFromCxxToHtml()
+{
+	return 0;
 }

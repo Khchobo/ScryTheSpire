@@ -1,20 +1,16 @@
 <HTML>
 <HEAD>
+    <SCRIPT type="text/javascript">
+        function init()
+        {
+            var testRes = window.external.BringData();
+            var pTestTarget = document.getElementById("test_target")
+            
+            pTestTarget.innerHTML = testRes;
+        }
+    </SCRIPT>
 </HEAD>
-<BODY ID=CScryTheSpireDlg BGCOLOR=LIGHTGREY style="font-family:MS Shell Dlg;font-size:8">
-
-<TABLE WIDTH=100% HEIGHT=100%>
-<TR WIDTH=100% HEIGHT=45%>
-<TD ALIGN=CENTER VALIGN=BOTTOM>
-ScryTheSpire
-</TD>
-</TR>
-<TR WIDTH=100% HEIGHT=100%>
-<TD ALIGN=RIGHT VALIGN=BOTTOM>
-<BUTTON STYLE="WIDTH:100" ID="ButtonCancel">Cancel</BUTTON>
-</TD>
-</TR>
-</TABLE>
-
+<BODY ID=CScryTheSpireDlg BGCOLOR=LIGHTGREY style="font-family:MS Shell Dlg;font-size:8" onload="init()">
+    <p id="test_target"></p>
 </BODY>
 </HTML>
