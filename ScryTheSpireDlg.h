@@ -22,7 +22,7 @@ public:
 	enum { IDD = IDD_SCRYTHESPIRE_DIALOG, IDH = IDR_HTML_SCRYTHESPIRE_DIALOG };
 #endif
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
 	HRESULT OnButtonOK(IHTMLElement *pElement);
@@ -31,6 +31,8 @@ public:
 	// Prevent ActiveX from complaining
 	BOOL IsExternalDispatchSafe() { return TRUE; }
 
+	// Store state of App
+	AppState m_appState;
 	AppState GetCurrentState();
 
 protected:
@@ -40,12 +42,15 @@ protected:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
+	void OnOK();
 	afx_msg HCURSOR OnQueryDragIcon();
 
-	// Store state of App
-	AppState m_appState;
+
 
 	DECLARE_DISPATCH_MAP()
 	DECLARE_MESSAGE_MAP()
 	DECLARE_DHTML_EVENT_MAP()
+
+private:
+	void LoadAndDisplayImage(CString fileName, CString elementId);
 };
