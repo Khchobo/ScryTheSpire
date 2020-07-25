@@ -338,5 +338,5 @@ void CScryTheSpireDlg::Debug()
 	GameCapture gameCap = GameCapture();
 
 	HBITMAP toDraw = gameCap.CaptureFrame();
-	SaveHBITMAPToFile(toDraw, _T("Test"));
+	SaveHBITMAPToFile(toDraw, _T("Test.bmp"));
 }

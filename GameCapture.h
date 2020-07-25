@@ -12,8 +12,6 @@ private:
 	HDC m_hCapC;
 	HDC m_hDestC;
 	HBITMAP m_hbCapture;
-
-	int m_width;
-	int m_height;
+	RECT m_rDimensions;
 };
 
