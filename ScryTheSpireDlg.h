@@ -24,9 +24,8 @@ public:
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
-
-	HRESULT OnButtonOK(IHTMLElement *pElement);
-	HRESULT OnButtonCancel(IHTMLElement *pElement);
+	
+	HRESULT OnButtonDebug(IHTMLElement* /*pElement*/);
 
 	// Prevent ActiveX from complaining
 	BOOL IsExternalDispatchSafe() { return TRUE; }
@@ -42,15 +41,15 @@ protected:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
-	void OnOK();
 	afx_msg HCURSOR OnQueryDragIcon();
-
-
 
 	DECLARE_DISPATCH_MAP()
 	DECLARE_MESSAGE_MAP()
-	DECLARE_DHTML_EVENT_MAP()
+	DECLARE_DHTML_EVENT_MAP();
 
 private:
 	void LoadAndDisplayImage(CString fileName, CString elementId);
+
+	// To test new features quickly
+	void Debug();
 };
